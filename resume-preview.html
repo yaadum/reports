@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		
+		<script src="http://www.fsfoo.com/js/vendor/handlebars-1.0.rc.2.js"></script>
+		</head>  
+    <body>
+	<style>
+	
+table {
+  border-collapse: collapse;
+}
+h1 {
+    margin: 0 0 10px 0;
+    padding: 5px;
+    font-size: 24px;
+    background-color: #999;
+    color: #fff;
+}
+table {
+    margin: 10px;
+	
+}
+th, td {
+    padding: 5px;
+    border: 1px solid #999;
+}
+th {
+    background: #ccc;
+}
+tr:nth-child(odd) {
+    background: #eee;
+}
+td a {
+    color: #000;
+    text-decoration: underline;
+}
+</style>
+	
+    	
+		
+		
+		<script id="built-in-helpers-template" type="text/x-handlebars-template">
+		
+		<div>
+		
+		
+		<div>
+		<div style="float: left;">
+		<img style="height:38%;width:38%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvWU7fb9tdCeo3UESlAapdftBpyjaTrgCioZ-qzUh0aUylIZ67Nw"/>
+		
+		</div>
+		<div style="padding-left:900px;" class="col-md-6">
+		
+		<p >
+		<b>{{details.name}}</b><br/>
+		{{details.address1}}<br/>
+		{{details.address2}}<br/>
+		<b>Email:</b>{{details.email}}<br/>
+		<b>Ph.no:</b>{{details.phone}}
+		</p>
+		</div>
+		
+		</div>
+        <div>
+		
+		  <b>Career Objective</b>
+		  <p style="padding-left:30px;">{{carrer.aim}}</p>
+          </div>
+	<div>	
+ <b> Educational Qualifications</b><br/>
+ <div style="padding-left:100px;">
+  <table> 
+    <thead> 
+        <th>Examination</th> 
+        <th>Discipline/Specialization</th> 
+        <th>Board/University</th> 
+		<th>School/college</th> 
+		<th>Year of Passing</th> 
+		<th>Percentage(%)</th>
+    </thead> 
+    <tbody> 
+        {{#users}} 
+        <tr> 
+            <td>{{firstName}}</td> 
+            <td>{{disip}}</td>
+			<td>{{board}}</td>
+            <td>{{scl}}</td> 
+			<td>{{year}}</td>
+			<td>{{percent}}</td>
+        </tr> 
+        {{/users}} 
+    </tbody> 
+</table>
+</div> 
+</div>
+<div>
+<b>Technical Knowledge</b>
+
+  {{#tech}}
+    <ul>
+	<li>{{program}}</li>
+      
+    </ul>
+  {{/tech}}<br/>
+  </div>
+  <div>
+  <b>Technical Course</b>
+   {{#course}}
+    <ul>
+	<li>Certification Course in {{corse}}</li>
+      
+    </ul>
+  {{/course}}<br/>
+  </div>
+  <div>
+  <b>Area of Interest</b>
+  {{#each animals}}
+    <ul>
+	<li>{{name}}</li>
+      
+    </ul>
+  {{/each}}<br/>
+  </div><br/>
+  <b>Extra Curricular Activites</b>
+<div>
+ {{#extra}}
+    <ul>
+	<li>{{act}}
+      
+    </ul>
+  {{/extra}}<br/>
+
+</div>  
+
+  
+  <b>Project Details</b><br></br>
+  <div style="padding-left:40px;">
+  <b>Project Title :</b>{{project.title}}<br/>
+  <b>Domain :</b>{{project.domain}}</br>
+  <b>Description :</b><br/>
+  {{project.descrip}}
+  
+  </div><br/>
+  <div><b>Personal Details</b></div><br/>
+<div style="padding-left:40px;">
+<b>Father Name/Occupation:</b>{{personal.fathername}}/{{personal.occupation}}<br/>
+<b>Sex/Marital Status:</b>{{personal.sex}}/{{personal.maritalstatus}}</br>
+<b>DOB:</b>{{personal.dob}}
+
+
+
+</div><br/>
+<b>Declaration</b>
+<div>
+<p style="padding-left:40px;">{{declare.details}}</p>
+</div>
+<div>
+<b>Place:</b>{{declare.place}}<br/>
+<b>Date:</b>{{declare.date}}</br>
+<p style="padding-left:950px;">{{details.name}}</p>
+
+</div>
+
+</div>
+</script>
+
+<div style="margin-left:auto;margin-right:auto;" class="content-placeholder">
+
+
+</div>
+		
+		
+<script>
+		$(function () {
+
+  // Register a helper
+  
+
+  // Grab the template script
+  var theTemplateScript = $("#built-in-helpers-template").html();
+
+  // Compile the template
+  var theTemplate = Handlebars.compile(theTemplateScript);
+
+  // We will call this template on an array of objects
+  var context = {
+    details:{
+	name:"G.PRAVEENA",
+	address1:"B-S1,Mahasakthi colony,",
+	address2:"Sembakkam, Chennai.",
+	email:"pravee.gowthaman@gmail.com",
+	phone:"7546989213"
+	
+	
+	},
+	declare:{
+	details:"I hereby declare that the above-mentioned information is correct up to my knowledge and I bear the responsibility for the correctness of the above-mentioned particulars",
+	place:"chennai",
+	date:"20.11.2017"
+	
+	},
+    carrer:{
+	aim:"To work in the firm with professional work driven environment where I can utilize my knowledge and skills which enable me as a fresh graduate to grow while fulfilling organizational goal."
+	},
+	project:{
+	title:"Image Enhancement & Demosaicing of CFA Blurred Images",
+	domain:"Digital Image Processing using MATLAB",
+	descrip:"An optimal approach to color image compression using Demosaicing algorithm is introduced.  In this primary color is encoded instead full color image, by using Bayer pattern.Denoising and Demosaicing process is applied so that the reconstructed image having higher quality than the original image"
+	},
+	personal:{
+	fathername:"Gowthaman.G",
+	occupation:"Salesman",
+	maritalstatus:"single",
+	dob:"08-11-1993",
+	nationality:"Indian",
+	sex:"Female"
+	
+	},
+	users: [ { 
+        
+		firstName: "B.E",
+        disip: "ECE",
+        board: "Anna University" ,
+		scl:"A.V.C College of Engineeering",
+		year:"2015",
+		percent:"86"
+		
+    }, {
+         
+		 firstName: "HSC",
+         disip: "science+maths",
+        board: "Matriculation" ,
+		scl:"Nivetha Matric Hr.sec School",
+		year:"2011",
+		percent:"93.25"
+    }, {
+       
+		firstName: "S.S.L.C",
+         disip: "SSLC",
+        board: "Matriculation" ,
+		scl:"Nivetha Matric Hr.sec School",
+		year:"2009",
+		percent:"87"
+    } ],
+	tech:[
+	{
+	program:"Programming Language: C, C++ ,HTML,CSS and PHP"	
+	},
+	{
+	program:"Packages: MS Office and AUTOCAD"
+	}
+	],
+	course:[
+	{
+	corse:"DIPLOMA IN ELECTRICAL CADD."	
+	},
+	{
+	corse:"PHP and JAVA."
+	}
+	],
+	 extra:[
+      {
+        act: "Participated in SET EINSTEIN exhibition and demonstrated a project entitled “3D Animation Car” held on Feb 28,2015"
+       
+      },
+      {
+        act: "Participated in Paper Presentation event in TECH CRUZ’15 Nation Level Technical Symposium held on 4th September 2015"       
+      }
+    ],
+	
+    animals:[
+      {
+        name: "Wireless Communication"
+       
+      },
+      {
+        name: "Data Strucures"       
+      }
+    ]
+  };
+
+  // Pass our data to the template
+  var theCompiledHtml = theTemplate(context);
+
+  // Add the compiled html to the page
+  $('.content-placeholder').html(theCompiledHtml);
+
+});
+
+	
+	
+</script>
+
+		
+    </body> 
+</html>
